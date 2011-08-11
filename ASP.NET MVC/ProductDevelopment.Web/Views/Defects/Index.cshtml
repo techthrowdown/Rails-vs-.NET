@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Defect>
+@{
+    ViewBag.Title = "Search Defects";
+}
+<h2>
+    Search Defects</h2>
+<p>
+    @Html.ActionLink("Create New Defect", "Create")
+</p>
+<table id="searchResults">
+    <thead>
+        <tr>
+            <th>
+                Summary
+            </th>
+            <th>
+                StepsToReproduce
+            </th>
+            <th>
+                CreateDate
+            </th>
+            <th>
+                ModifyDate
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StepsToReproduce)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifyDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#searchResults').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>

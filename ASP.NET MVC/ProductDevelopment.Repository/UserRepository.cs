@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Web.Helpers;
 using ProductDevelopment.Models;
 
 namespace ProductDevelopment.Repository
 {
-    public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
-        public UserRepository(IProductDevelopmentContext ctx) : base(ctx)
-        {
-            
-        }
-
         public User FindByUsername(string username)
         {
             return _ctx.Users.Where(u => u.Username.ToLower() == username.ToLower()).SingleOrDefault();

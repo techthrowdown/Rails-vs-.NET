@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <Private>True</Private>
       <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -48,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Defect.cs" />
     <Compile Include="EntityBase.cs" />
-    <Compile Include="IProductDevelopmentContext.cs" />
     <Compile Include="ProductDevelopmentContext.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

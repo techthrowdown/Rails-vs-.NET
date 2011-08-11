@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Transactions;
+﻿using System.Linq;
 using NUnit.Framework;
 using ProductDevelopment.Models;
 
@@ -12,12 +8,23 @@ namespace ProductDevelopment.DatabaseMappingTests
     public class UserTableTests
     {
         private ProductDevelopmentContext ctx;
-        
+
 
         [TestFixtureSetUp]
         public void Setup()
         {
             ctx = new ProductDevelopmentContext();
+        }
+
+        private User CreateUser()
+        {
+            var user = new User();
+            user.Username = "TestUser";
+            user.Password = "TestPassword";
+            user.Admin = false;
+            ctx.Users.Add(user);
+            ctx.SaveChanges();
+            return user;
         }
 
         [Test]
@@ -45,17 +52,6 @@ namespace ProductDevelopment.DatabaseMappingTests
             ctx.SaveChanges();
             var newUser = ctx.Users.Where(u => u.UserId == user.UserId).SingleOrDefault();
             Assert.AreEqual(newUser.Username, "AAAA");
-        }
-
-        private User CreateUser()
-        {
-            var user = new User();
-            user.Username = "TestUser";
-            user.Password = "TestPassword";
-            user.Admin = false;
-            ctx.Users.Add(user);
-            ctx.SaveChanges();
-            return user;
         }
     }
 }

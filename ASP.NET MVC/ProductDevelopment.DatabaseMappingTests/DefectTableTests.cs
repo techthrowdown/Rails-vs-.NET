@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using ProductDevelopment.Models;
 
@@ -18,18 +15,13 @@ namespace ProductDevelopment.DatabaseMappingTests
             ctx = new ProductDevelopmentContext();
         }
 
-        [Test]
-        public void CreateDefect_ShouldError()
-        {
-            var defect = CreateDefect();
-        }
-
         private Defect CreateDefect()
         {
             var user = CreateUser();
             var project = CreateProject();
-            var defect = new Defect()
+            var defect = new Defect
                              {
+                                 Project = project,
                                  AssignedToUserId = user,
                                  CreatorUserId = user,
                                  CreateDate = DateTime.Now,
@@ -42,11 +34,11 @@ namespace ProductDevelopment.DatabaseMappingTests
 
         private Project CreateProject()
         {
-            var project = new Project()
-            {
-                Active = true,
-                Name = "TestProject"
-            };
+            var project = new Project
+                              {
+                                  Active = true,
+                                  Name = "TestProject"
+                              };
             ctx.Projects.Add(project);
             ctx.SaveChanges();
             return project;
@@ -61,6 +53,12 @@ namespace ProductDevelopment.DatabaseMappingTests
             ctx.Users.Add(user);
             ctx.SaveChanges();
             return user;
+        }
+
+        [Test]
+        public void CreateDefect_ShouldError()
+        {
+            var defect = CreateDefect();
         }
     }
 }

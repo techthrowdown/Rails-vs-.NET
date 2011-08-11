@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using NUnit.Framework;
 using ProductDevelopment.Models;
@@ -16,11 +15,27 @@ namespace ProductDevelopment.DatabaseMappingTests
             ctx = new ProductDevelopmentContext();
         }
 
-        [Test]
-        public void CreateProject_ShouldReturnProject()
+        private Project CreateProject()
         {
-            var project = CreateProject();
-            Assert.IsTrue(project.ProjectId > 0);
+            var project = new Project
+                              {
+                                  Active = true,
+                                  Name = "TestProject"
+                              };
+            ctx.Projects.Add(project);
+            ctx.SaveChanges();
+            return project;
+        }
+
+        private User CreateUser()
+        {
+            var user = new User();
+            user.Username = "TestUser";
+            user.Password = "TestPassword";
+            user.Admin = false;
+            ctx.Users.Add(user);
+            ctx.SaveChanges();
+            return user;
         }
 
         [Test]
@@ -44,27 +59,11 @@ namespace ProductDevelopment.DatabaseMappingTests
             Assert.AreEqual(newUser.Projects.Count, 1);
         }
 
-        private Project CreateProject()
+        [Test]
+        public void CreateProject_ShouldReturnProject()
         {
-            var project = new Project()
-                              {
-                                  Active = true,
-                                  Name = "TestProject"
-                              };
-            ctx.Projects.Add(project);
-            ctx.SaveChanges();
-            return project;
-        }
-
-        private User CreateUser()
-        {
-            var user = new User();
-            user.Username = "TestUser";
-            user.Password = "TestPassword";
-            user.Admin = false;
-            ctx.Users.Add(user);
-            ctx.SaveChanges();
-            return user;
+            var project = CreateProject();
+            Assert.IsTrue(project.ProjectId > 0);
         }
     }
 }

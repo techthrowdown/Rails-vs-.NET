@@ -1,6 +1,4 @@
-using System;
 using System.Web;
-using System.Web.Mvc;
 using System.Web.Security;
 using ProductDevelopment.Models;
 using ProductDevelopment.Repository;
@@ -18,7 +16,7 @@ namespace ProductDevelopment.Web.Infrastructure
 
         public bool LogonUser(string username, string password, bool persistLogin)
         {
-            if(_userRepository.ValidateUserCredentials(username, password))
+            if (_userRepository.ValidateUserCredentials(username, password))
             {
                 FormsAuthentication.SetAuthCookie(username, persistLogin);
                 return true;
@@ -34,10 +32,10 @@ namespace ProductDevelopment.Web.Infrastructure
         public User CurrentUser()
         {
             var ctx = HttpContext.Current;
-            if(ctx.Request.IsAuthenticated)
+            if (ctx.Request.IsAuthenticated)
             {
                 var user = ctx.Items["CurrentUser"] as User;
-                if(user == null)
+                if (user == null)
                 {
                     user = _userRepository.FindByUsername(ctx.User.Identity.Name);
                 }
@@ -45,12 +43,5 @@ namespace ProductDevelopment.Web.Infrastructure
             }
             return null;
         }
-    }
-
-    public interface IAuthentication
-    {
-        bool LogonUser(string username, string password, bool persistLogin);
-        void LogoutUser();
-        User CurrentUser();
     }
 }
