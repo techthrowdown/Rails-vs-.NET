@@ -1,13 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDevelopment.Models", "ProductDevelopment.Models\ProductDevelopment.Models.csproj", "{9653D79D-C9DA-41B5-AA1F-980900EE6566}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDevelopment.Repository", "ProductDevelopment.Repository\ProductDevelopment.Repository.csproj", "{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{09751CD8-5E07-4DE2-B7CE-2480482AB8BA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDevelopment.DatabaseMappingTests", "ProductDevelopment.DatabaseMappingTests\ProductDevelopment.DatabaseMappingTests.csproj", "{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDevelopment.Tests", "ProductDevelopment.Tests\ProductDevelopment.Tests.csproj", "{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductDevelopment.Web", "ProductDevelopment.Web\ProductDevelopment.Web.csproj", "{255223B5-D6FC-45EF-A8A7-16CF96BF9625}"
 EndProject
@@ -21,26 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9653D79D-C9DA-41B5-AA1F-980900EE6566}.Release|x86.ActiveCfg = Release|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}.Release|x86.ActiveCfg = Release|Any CPU
 		{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -64,8 +38,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D4F1DA8B-E24F-4FE9-A315-7B985BA54D0F} = {09751CD8-5E07-4DE2-B7CE-2480482AB8BA}
 	EndGlobalSection
 EndGlobal

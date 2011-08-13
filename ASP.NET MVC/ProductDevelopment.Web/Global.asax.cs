@@ -3,9 +3,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject;
-using ProductDevelopment.Models;
-using ProductDevelopment.Repository;
 using ProductDevelopment.Web.Infrastructure;
+using ProductDevelopment.Web.Infrastructure.Data;
+using ProductDevelopment.Web.Infrastructure.Security;
+using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web
 {
@@ -21,7 +22,6 @@ namespace ProductDevelopment.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             RegisterDependencyResolver(kernel);
-            FilterProviders.Providers.Add(new InjectableFilterProvider(kernel));
         }
 
         private static void RegisterGlobalFilters(GlobalFilterCollection filters)

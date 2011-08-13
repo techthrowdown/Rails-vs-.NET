@@ -12,7 +12,9 @@
     <div class="page">
         <header>
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1>
+                    My MVC Application
+                </h1>
             </div>
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
@@ -20,6 +22,8 @@
             <nav>
                 <ul id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Admin Only", "Index", "AdminOnly")</li>
                     <li>@Html.ActionLink("Defects", "Index", "Defects")</li>
                 </ul>
             </nav>

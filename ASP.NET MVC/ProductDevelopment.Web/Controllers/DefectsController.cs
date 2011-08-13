@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using ProductDevelopment.Models;
-using ProductDevelopment.Repository;
+using ProductDevelopment.Web.Infrastructure.Data;
+using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web.Controllers
 {

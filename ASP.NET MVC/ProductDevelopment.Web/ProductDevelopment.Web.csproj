@@ -77,12 +77,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Authentication.cs" />
-    <Compile Include="Infrastructure\Filters\AdminOnly.cs" />
-    <Compile Include="Infrastructure\IAuthentication.cs" />
-    <Compile Include="Infrastructure\InjectableFilterProvider.cs" />
+    <Compile Include="Infrastructure\Security\Authentication.cs" />
+    <Compile Include="Infrastructure\Data\IRepository.cs" />
+    <Compile Include="Infrastructure\Data\IUserRepository.cs" />
+    <Compile Include="Infrastructure\Data\ProductDevelopmentContext.cs" />
+    <Compile Include="Infrastructure\Data\Repository.cs" />
+    <Compile Include="Infrastructure\Data\SeedData.cs" />
+    <Compile Include="Infrastructure\Data\UserRepository.cs" />
+    <Compile Include="Infrastructure\Security\IAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\LogOnModel.cs" />
+    <Compile Include="Models\Defect.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\LogOn.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Severity.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,16 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProductDevelopment.Models\ProductDevelopment.Models.csproj">
-      <Project>{9653D79D-C9DA-41B5-AA1F-980900EE6566}</Project>
-      <Name>ProductDevelopment.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProductDevelopment.Repository\ProductDevelopment.Repository.csproj">
-      <Project>{A9E33BC3-5CCA-4D24-80AE-40AAE25E004D}</Project>
-      <Name>ProductDevelopment.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AdminOnly\Index.cshtml" />

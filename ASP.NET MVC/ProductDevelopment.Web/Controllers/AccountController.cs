@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using ProductDevelopment.Web.Infrastructure;
+using ProductDevelopment.Web.Infrastructure.Security;
 using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web.Controllers
@@ -19,7 +19,7 @@ namespace ProductDevelopment.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult LogOn(LogOn model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
