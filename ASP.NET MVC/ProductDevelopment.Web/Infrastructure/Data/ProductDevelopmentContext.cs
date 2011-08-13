@@ -10,6 +10,7 @@ namespace ProductDevelopment.Web.Infrastructure.Data
         public IDbSet<User> Users { get; set; }
         public IDbSet<Project> Projects { get; set; }
         public IDbSet<Defect> Defects { get; set; }
+        public IDbSet<Severity> Severities { get; set; }
 
         public virtual IDbSet<T> DbSet<T>() where T : Entity
         {
