@@ -2,7 +2,7 @@
 
 namespace ProductDevelopment.Web.Models
 {
-    public class LogOn
+    public class LogOnInputModel
     {
         [Required]
         [Display(Name = "User name")]

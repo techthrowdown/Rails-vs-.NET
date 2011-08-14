@@ -19,7 +19,7 @@ namespace ProductDevelopment.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOn model, string returnUrl)
+        public ActionResult LogOn(LogOnInputModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {

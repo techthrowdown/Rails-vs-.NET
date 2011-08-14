@@ -27,8 +27,7 @@ namespace ProductDevelopment.Web.Controllers
                                      AssignedTo = x.AssignedToUserId.Username,
                                      CreateDate = x.CreateDate,
                                      ModifyDate = x.ModifyDate
-                                 })
-                .ToArray();
+                                 });
             return View(defects);
         }
 
