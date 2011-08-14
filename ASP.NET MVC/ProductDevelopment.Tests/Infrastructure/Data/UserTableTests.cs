@@ -19,8 +19,8 @@ namespace ProductDevelopment.Tests.Infrastructure.Data
         private User CreateUser()
         {
             var user = new User();
-            user.Username = "TestUser";
-            user.Password = "TestPassword";
+            user.Username = "TestUser123";
+            user.Password = "TestPassword123";
             user.Admin = false;
             ctx.Users.Add(user);
             ctx.SaveChanges();

@@ -14,12 +14,11 @@ namespace ProductDevelopment.Web.Controllers
             _repository = repository;
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             var defects = _repository.All()
                 .Select(x => new DefectSearchResultsViewModel
                                  {
-                                     Id = x.DefectId,
                                      Project = x.Project.Name,
                                      Summary = x.Summary,
                                      Severity = x.Severity.SeverityDescription,
