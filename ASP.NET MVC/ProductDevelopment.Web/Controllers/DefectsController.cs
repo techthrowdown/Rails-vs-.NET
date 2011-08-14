@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using ProductDevelopment.Models;
+﻿using System.Linq;
+using System.Web.Mvc;
 using ProductDevelopment.Web.Infrastructure.Data;
 using ProductDevelopment.Web.Models;
 
@@ -16,7 +16,19 @@ namespace ProductDevelopment.Web.Controllers
 
         public ActionResult Index()
         {
-            var defects = _repository.All();
+            var defects = _repository.All()
+                .Select(x => new DefectSearchResultsViewModel
+                                 {
+                                     Id = x.DefectId,
+                                     Project = x.Project.Name,
+                                     Summary = x.Summary,
+                                     Severity = x.Severity.SeverityDescription,
+                                     CreatedBy = x.CreatorUserId.Username,
+                                     AssignedTo = x.AssignedToUserId.Username,
+                                     CreateDate = x.CreateDate,
+                                     ModifyDate = x.ModifyDate
+                                 })
+                .ToArray();
             return View(defects);
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Defect>
+﻿@model IEnumerable<DefectSearchResultsViewModel>
 @{
     ViewBag.Title = "Search Defects";
 }
@@ -12,16 +12,25 @@
     <thead>
         <tr>
             <th>
+                Project
+            </th>
+            <th>
                 Summary
             </th>
             <th>
-                StepsToReproduce
+                Severity
             </th>
             <th>
-                CreateDate
+                Created By
             </th>
             <th>
-                ModifyDate
+                Assigned To
+            </th>
+            <th>
+                Created Date
+            </th>
+            <th>
+                Modified Date
             </th>
         </tr>
     </thead>
@@ -30,10 +39,19 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Project)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Summary)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StepsToReproduce)
+                    @Html.DisplayFor(modelItem => item.Severity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedTo)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreateDate)

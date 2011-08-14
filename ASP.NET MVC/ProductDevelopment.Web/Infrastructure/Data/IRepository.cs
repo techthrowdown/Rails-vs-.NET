@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using ProductDevelopment.Models;
 
 namespace ProductDevelopment.Web.Infrastructure.Data
@@ -9,6 +9,6 @@ namespace ProductDevelopment.Web.Infrastructure.Data
         void Delete(T entity);
         void Update(T entity);
         T Find(int id);
-        IEnumerable<T> All();
+        IQueryable<T> All();
     }
 }

@@ -221,6 +221,8 @@ input[type="text"], input[type="password"]
     font-size: 1.2em;
     color: #444;
     width: 200px;
+    font-size: 14px;
+    font-family: inherit;
 }
 
 select
@@ -229,6 +231,8 @@ select
     padding: 2px;
     font-size: 1.2em;
     color: #444;
+    font-size: 14px;
+    font-family: inherit;
 }
 
 input[type="submit"]
@@ -390,23 +394,30 @@ div#title
     padding: 4px;
     text-align: left;
 }
+#searchResults_filter, #searchResults_paginate, #searchResults_length, #searchResults_info
+{
+    padding: 4px;
+    font-weight: normal;   
+}
 #searchResults_filter, #searchResults_paginate
 {
-    width: 65%;
-    padding: 4px;
+    float: right;
+    text-align: right;
 }
 #searchResults_length, #searchResults_info
 {
-    width: 35%;
-    padding: 4px;
-    float: right;
-    text-align: right;
+    float: left;
+    text-align: left;
 }
 .DataTables_sort_icon
 {
     float: right;
 }
-#searchResults_paginate > span
-{
-    padding: 2px 6px;
+.dataTables_paginate .ui-button {
+    margin-right: -0.1em !important;
+}
+.paging_full_numbers .ui-button {
+padding: 2px 6px;
+margin: 0;
+cursor: pointer;
 }

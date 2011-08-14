@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Helpers;
-using ProductDevelopment.Models;
 using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web.Infrastructure.Data

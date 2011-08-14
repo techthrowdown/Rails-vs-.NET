@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using ProductDevelopment.Models;
 
@@ -40,9 +39,9 @@ namespace ProductDevelopment.Web.Infrastructure.Data
             return _set.Find(id);
         }
 
-        public IEnumerable<T> All()
+        public IQueryable<T> All()
         {
-            return _set.ToList();
+            return _set;
         }
     }
 }

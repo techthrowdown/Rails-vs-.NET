@@ -186,7 +186,7 @@ namespace ProductDevelopment.Web.Infrastructure.Data
                                          },
                                      new Severity
                                          {
-                                             SeverityDescription = "FILE",
+                                             SeverityDescription = "FAIL",
                                              SortOrder = 3
                                          }
                                  };
