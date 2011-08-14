@@ -86,6 +86,7 @@
     <Compile Include="Infrastructure\Data\UserRepository.cs" />
     <Compile Include="Infrastructure\Security\IAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\DefectInputModel.cs" />
     <Compile Include="Models\DefectSearchResultsViewModel.cs" />
     <Compile Include="Models\Defect.cs" />
     <Compile Include="Models\Entity.cs" />

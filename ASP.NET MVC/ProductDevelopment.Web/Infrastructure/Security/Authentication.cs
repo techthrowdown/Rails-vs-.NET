@@ -1,6 +1,5 @@
 using System.Web;
 using System.Web.Security;
-using ProductDevelopment.Models;
 using ProductDevelopment.Web.Infrastructure.Data;
 using ProductDevelopment.Web.Models;
 
@@ -39,6 +38,7 @@ namespace ProductDevelopment.Web.Infrastructure.Security
                 if (user == null)
                 {
                     user = _userRepository.FindByUsername(ctx.User.Identity.Name);
+                    ctx.Items["CurrentUser"] = user;
                 }
                 return user;
             }
