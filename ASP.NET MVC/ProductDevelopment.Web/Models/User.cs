@@ -10,7 +10,7 @@ namespace ProductDevelopment.Web.Models
         public string Password { get; set; }
         public bool Admin { get; set; }
         public ICollection<Project> Projects { get; set; }
-
+    
         public User()
         {
             Projects = new List<Project>();

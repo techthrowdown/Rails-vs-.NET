@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject;
+using ProductDevelopment.Models;
 using ProductDevelopment.Web.Infrastructure;
 using ProductDevelopment.Web.Infrastructure.Data;
 using ProductDevelopment.Web.Infrastructure.Security;
@@ -42,9 +43,11 @@ namespace ProductDevelopment.Web
 
         private static void RegisterDependencyResolver(IKernel kernel)
         {
-            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IAuthentication>().To<Authentication>().InRequestScope();
+            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IRepository<Defect>>().To<Repository<Defect>>().InRequestScope();
+            kernel.Bind<IRepository<Project>>().To<Repository<Project>>().InRequestScope();
+            kernel.Bind<IRepository<Severity>>().To<Repository<Severity>>().InRequestScope();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

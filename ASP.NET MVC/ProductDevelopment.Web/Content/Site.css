@@ -212,6 +212,7 @@ legend
 textarea
 {
     min-height: 75px;
+    width: 100%;
 }
 
 input[type="text"], input[type="password"]
@@ -397,7 +398,7 @@ div#title
 #searchResults_filter, #searchResults_paginate, #searchResults_length, #searchResults_info
 {
     padding: 4px;
-    font-weight: normal;   
+    font-weight: normal;
 }
 #searchResults_filter, #searchResults_paginate
 {
@@ -413,11 +414,13 @@ div#title
 {
     float: right;
 }
-.dataTables_paginate .ui-button {
+.dataTables_paginate .ui-button
+{
     margin-right: -0.1em !important;
 }
-.paging_full_numbers .ui-button {
-padding: 2px 6px;
-margin: 0;
-cursor: pointer;
+.paging_full_numbers .ui-button
+{
+    padding: 2px 6px;
+    margin: 0;
+    cursor: pointer;
 }

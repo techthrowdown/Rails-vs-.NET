@@ -24,8 +24,8 @@ namespace ProductDevelopment.Tests.Infrastructure.Data
             var defect = new Defect
                              {
                                  Project = project,
-                                 AssignedToUserId = user,
-                                 CreatorUserId = user,
+                                 AssignedToUser = user,
+                                 CreatorUser = user,
                                  CreateDate = DateTime.Now,
                                  StepsToReproduce = "123"
                              };

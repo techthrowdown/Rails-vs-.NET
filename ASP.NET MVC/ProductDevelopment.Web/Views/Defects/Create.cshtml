@@ -1,0 +1,58 @@
+﻿@model DefectInputModel
+@{
+    ViewBag.Title = "Create New Defect";
+}
+<h2>
+    Create New Defect
+</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>Defect</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProjectId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.ProjectId, Model.ProjectSelectList, "-- Choose one --")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Summary)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Summary)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StepsToReproduce)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.StepsToReproduce)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatorUserId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.CreatorUserId, Model.UserSelectList, "-- Choose one --")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssignedToUserId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.AssignedToUserId, Model.UserSelectList, "-- Choose one --")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeverityId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.SeverityId, Model.SeveritySelectList, "-- Choose one --")
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to Search Defects", "Index")
+</div>

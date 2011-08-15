@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using ProductDevelopment.Models;
 using ProductDevelopment.Web.Infrastructure.Data;
-using ProductDevelopment.Web.Infrastructure.Security;
 using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web.Controllers
@@ -11,15 +11,19 @@ namespace ProductDevelopment.Web.Controllers
     {
         private readonly IRepository<Defect> _defectRepo;
         private readonly IRepository<Project> _projectRepo;
-        private readonly IRepository<User> _userRepo;
-        private readonly IAuthentication _authentication;
+        private readonly IUserRepository _userRepo;
+        private readonly IRepository<Severity> _severityRepo;
 
-        public DefectsController(IRepository<Defect> defectRepo, IRepository<Project> projectRepo, IRepository<User> userRepo, IAuthentication authentication)
+        // TODO: Should the drop down list methods be contained in a IDefectRepository instead?
+        public DefectsController(IRepository<Defect> defectRepo,
+                                 IRepository<Project> projectRepo,
+                                 IUserRepository userRepo,
+                                 IRepository<Severity> severityRepo)
         {
             _defectRepo = defectRepo;
-            _authentication = authentication;
             _projectRepo = projectRepo;
             _userRepo = userRepo;
+            _severityRepo = severityRepo;
         }
 
         public ViewResult Index()
@@ -30,8 +34,8 @@ namespace ProductDevelopment.Web.Controllers
                                      Project = x.Project.Name,
                                      Summary = x.Summary,
                                      Severity = x.Severity.SeverityDescription,
-                                     CreatedBy = x.CreatorUserId.Username,
-                                     AssignedTo = x.AssignedToUserId.Username,
+                                     CreatedBy = x.CreatorUser.Username,
+                                     AssignedTo = x.AssignedToUser.Username,
                                      CreateDate = x.CreateDate,
                                      ModifyDate = x.ModifyDate
                                  });
@@ -40,30 +44,55 @@ namespace ProductDevelopment.Web.Controllers
 
         public ViewResult Create()
         {
-            var currentUser = _authentication.CurrentUser();
             var inputModel = new DefectInputModel
                                  {
-                                     CreatorUserId = currentUser,
-                                     AssignedToUserId = currentUser,
-                                     ProjectSelectList = new SelectList(_projectRepo.All(), "ProjectId", "Name"),
-                                     UserSelectList = new SelectList(_userRepo.All(), "UserId", "Username", currentUser != null ? currentUser.UserId.ToString() : null)
+                                     ProjectSelectList = GetProjectSelectList(),
+                                     UserSelectList = GetUserSelectList(),
+                                     SeveritySelectList = GetSeveritySelectList()
                                  };
             return View(inputModel);
         }
 
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
+        [HttpPost]
+        public ActionResult Create(Defect defect)
+        {
+            var inputModel = new DefectInputModel
+            {
+                ProjectSelectList = GetProjectSelectList(),
+                UserSelectList = GetUserSelectList(),
+                SeveritySelectList = GetSeveritySelectList()
+            };
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            if (!ModelState.IsValid)
+            {
+                return View(inputModel);
+            }
+
+            try
+            {
+                _defectRepo.Add(defect);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(inputModel);
+            }
+        }
+
+        private SelectList GetSeveritySelectList()
+        {
+            return new SelectList(_severityRepo.All(), "SeverityId", "SeverityDescription");
+        }
+
+        private SelectList GetUserSelectList()
+        {
+            return new SelectList(_userRepo.All(), "UserId", "Username");
+        }
+
+        private SelectList GetProjectSelectList()
+        {
+            return new SelectList(_projectRepo.All(), "ProjectId", "Name");
+        }
     }
 }

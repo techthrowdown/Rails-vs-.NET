@@ -25,6 +25,18 @@ namespace ProductDevelopment.Web.Infrastructure.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Configuration.LazyLoadingEnabled = false;
+
+            modelBuilder.Entity<Defect>()
+                .HasRequired(x => x.CreatorUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatorUserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Defect>()
+                .HasRequired(x => x.AssignedToUser)
+                .WithMany()
+                .HasForeignKey(x => x.AssignedToUserId)
+                .WillCascadeOnDelete(false);
         }
     }
 }
