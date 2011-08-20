@@ -2,63 +2,33 @@
 @{
     ViewBag.Title = "Search Defects";
 }
-<h2>
-    Search Defects
-</h2>
+<h2>Search Defects</h2>
 <p>
     @Html.ActionLink("Create New Defect", "Create")
 </p>
 <table id="searchResults">
     <thead>
         <tr>
-            <th>
-                Project
-            </th>
-            <th>
-                Summary
-            </th>
-            <th>
-                Severity
-            </th>
-            <th>
-                Created By
-            </th>
-            <th>
-                Assigned To
-            </th>
-            <th>
-                Created Date
-            </th>
-            <th>
-                Modified Date
-            </th>
+            <th>Project</th>
+            <th>Summary</th>
+            <th>Severity</th>
+            <th>Created By</th>
+            <th>Assigned To</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Project)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Summary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Severity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AssignedTo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifyDate)
-                </td>
+                <td>@item.Project</td>
+                <td>@item.Summary</td>
+                <td>@item.Severity</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.AssignedTo</td>
+                <td>@item.CreateDate</td>
+                <td>@item.ModifyDate</td>
             </tr>
         }
     </tbody>
