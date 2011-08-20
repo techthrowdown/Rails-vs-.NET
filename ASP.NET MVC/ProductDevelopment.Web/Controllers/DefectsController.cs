@@ -14,7 +14,6 @@ namespace ProductDevelopment.Web.Controllers
         private readonly IUserRepository _userRepo;
         private readonly IRepository<Severity> _severityRepo;
 
-        // TODO: Should the drop down list methods be contained in a IDefectRepository instead?
         public DefectsController(IRepository<Defect> defectRepo,
                                  IRepository<Project> projectRepo,
                                  IUserRepository userRepo,
@@ -28,43 +27,22 @@ namespace ProductDevelopment.Web.Controllers
 
         public ViewResult Index()
         {
-            var viewModels = _defectRepo.All()
-                .Select(x => new DefectSearchResultsViewModel
-                                 {
-                                     Project = x.Project.Name,
-                                     Summary = x.Summary,
-                                     Severity = x.Severity.SeverityDescription,
-                                     CreatedBy = x.CreatorUser.Username,
-                                     AssignedTo = x.AssignedToUser.Username,
-                                     CreateDate = x.CreateDate,
-                                     ModifyDate = x.ModifyDate
-                                 });
+            var viewModels = ViewModels();
             return View(viewModels);
         }
 
         public ViewResult Create()
         {
-            var inputModel = new DefectInputModel
-                                 {
-                                     ProjectSelectList = GetProjectSelectList(),
-                                     UserSelectList = GetUserSelectList(),
-                                     SeveritySelectList = GetSeveritySelectList()
-                                 };
+            var inputModel = InputModel();
             return View(inputModel);
         }
 
         [HttpPost]
         public ActionResult Create(Defect defect)
         {
-            var inputModel = new DefectInputModel
-            {
-                ProjectSelectList = GetProjectSelectList(),
-                UserSelectList = GetUserSelectList(),
-                SeveritySelectList = GetSeveritySelectList()
-            };
-
             if (!ModelState.IsValid)
             {
+                var inputModel = InputModel();
                 return View(inputModel);
             }
 
@@ -76,23 +54,50 @@ namespace ProductDevelopment.Web.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
+                var inputModel = InputModel(); 
                 return View(inputModel);
             }
         }
 
-        private SelectList GetSeveritySelectList()
+        private IQueryable<DefectSearchResultsViewModel> ViewModels()
         {
-            return new SelectList(_severityRepo.All(), "SeverityId", "SeverityDescription");
+            var viewModels = _defectRepo.All()
+                .Select(x => new DefectSearchResultsViewModel
+                                 {
+                                     Project = x.Project.Name,
+                                     Summary = x.Summary,
+                                     Severity = x.Severity.SeverityDescription,
+                                     CreatedBy = x.CreatorUser.Username,
+                                     AssignedTo = x.AssignedToUser.Username,
+                                     CreateDate = x.CreateDate,
+                                     ModifyDate = x.ModifyDate
+                                 });
+            return viewModels;
         }
 
-        private SelectList GetUserSelectList()
+        private DefectInputModel InputModel()
+        {
+            return new DefectInputModel
+                       {
+                           ProjectSelectList = ProjectSelectList(),
+                           UserSelectList = UserSelectList(),
+                           SeveritySelectList = SeveritySelectList()
+                       };
+        }
+
+        private SelectList ProjectSelectList()
+        {
+            return new SelectList(_projectRepo.All(), "ProjectId", "Name");
+        }
+
+        private SelectList UserSelectList()
         {
             return new SelectList(_userRepo.All(), "UserId", "Username");
         }
 
-        private SelectList GetProjectSelectList()
+        private SelectList SeveritySelectList()
         {
-            return new SelectList(_projectRepo.All(), "ProjectId", "Name");
+            return new SelectList(_severityRepo.All(), "SeverityId", "SeverityDescription");
         }
     }
 }
