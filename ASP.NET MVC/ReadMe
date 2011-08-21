@@ -1,0 +1,21 @@
+Soultion was built with:
+- Visual Studio 2010; Visual Studio Express, which is free, might also work (http://www.microsoft.com/express)
+- MVC 3 Tools Update (http://www.microsoft.com/download/en/details.aspx?id=1491)
+- NuGet for package management (http://nuget.org/)
+- Many NuGet packages inlcuded in the solution
+- ResSharper for code refactoring and cleanup ((http://www.jetbrains.com/resharper/))
+
+Testing was done with:
+- NUnit for decorating classes and methods as tests (http://www.nunit.org/)
+- Moq for object mocking (http://code.google.com/p/moq/)
+- ResSharper as a test runner, although NUnit also has a built in test runner (http://www.jetbrains.com/resharper/)
+
+Database was done with:
+- SQL Server Express (http://www.microsoft.com/sqlserver/en/us/editions/express.aspx)
+
+To install and run locally:
+- Download and unzip all code from GitHub (https://github.com/techthrowdown/Rails-vs-.NET/tree/master/ASP.NET%20MVC)
+- Install and setup SQL Server Express using Windows Authentication.  The connection string in the project assumes .\EXPRESS will resolve as the instance name.
+- Install Visual Studio 2010 or Visual Studio Express
+- Open the solution file "ProductDevelopment.sln" with Visual Studio
+- Press F5 to build and run the project
