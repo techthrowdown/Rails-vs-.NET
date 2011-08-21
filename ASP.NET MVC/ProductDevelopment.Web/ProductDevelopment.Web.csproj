@@ -74,6 +74,7 @@
     <Compile Include="Controllers\AdminOnlyController.cs" />
     <Compile Include="Controllers\DefectsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -86,6 +87,7 @@
     <Compile Include="Infrastructure\Data\UserRepository.cs" />
     <Compile Include="Infrastructure\Security\IAuthentication.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\Security\UserProviderFilter.cs" />
     <Compile Include="Models\DefectInputModel.cs" />
     <Compile Include="Models\DefectSearchResultsViewModel.cs" />
     <Compile Include="Models\Defect.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Severity.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Defects\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

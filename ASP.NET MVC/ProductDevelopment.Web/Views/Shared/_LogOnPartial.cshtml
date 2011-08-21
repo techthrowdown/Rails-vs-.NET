@@ -1,7 +1,7 @@
-﻿@if (Request.IsAuthenticated)
+﻿@if (ViewBag.User.Authenticated)
 {
     <text>
-        Welcome <strong>@User.Identity.Name</strong>! [ @Html.ActionLink("Log Off", "LogOff", "Account")  ]
+        Welcome <strong>@ViewBag.User.Username</strong>! [ @Html.ActionLink("Log Off", "LogOff", "Account")  ]
     </text>
 }
 else
