@@ -29,18 +29,25 @@ namespace ProductDevelopment.Web.Infrastructure.Security
             FormsAuthentication.SignOut();
         }
 
-        public User CurrentUser()
+        public UserToken CurrentUser()
         {
             var ctx = HttpContext.Current;
             if (ctx.Request.IsAuthenticated)
             {
-                var user = ctx.Items["CurrentUser"] as User;
-                if (user == null)
+                var userToken = ctx.Items["CurrentUser"] as UserToken;
+                if (userToken == null)
                 {
-                    user = _userRepository.FindByUsername(ctx.User.Identity.Name);
-                    ctx.Items["CurrentUser"] = user;
+                    var user = _userRepository.FindByUsername(ctx.User.Identity.Name);
+                    userToken = new UserToken()
+                    {
+                        Admin = user.Admin,
+                        Authenticated = true,
+                        UserId = user.UserId,
+                        Username = user.Username
+                    };
+                    ctx.Items["CurrentUser"] = userToken;
                 }
-                return user;
+                return userToken;
             }
             return null;
         }

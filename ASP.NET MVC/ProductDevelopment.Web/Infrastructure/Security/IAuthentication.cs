@@ -7,6 +7,6 @@ namespace ProductDevelopment.Web.Infrastructure.Security
     {
         bool LogonUser(string username, string password, bool persistLogin);
         void LogoutUser();
-        User CurrentUser();
+        UserToken CurrentUser();
     }
 }

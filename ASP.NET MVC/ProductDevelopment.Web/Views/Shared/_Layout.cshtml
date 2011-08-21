@@ -19,10 +19,12 @@
             </div>
             <nav>
                 <ul id="menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/Home/About">About</a></li>
-                    <li><a href="/AdminOnly">Admin Only</a></li>
-                    <li><a href="/Defects">Defects</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>                                    
+                    <li>@Html.ActionLink("Defects", "Index", "Defects")</li>
+                    @if (ViewBag.User.Admin)
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "User")</li>
+                    }
                 </ul>
             </nav>
         </header>

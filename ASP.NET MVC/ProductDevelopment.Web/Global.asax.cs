@@ -13,21 +13,22 @@ namespace ProductDevelopment.Web
 {
     public class MvcApplication : HttpApplication
     {
+        private static IKernel _kernel;
+
         protected void Application_Start()
         {
-            var kernel = new StandardKernel();
-
             Database.SetInitializer(new SeedData()); //Do not include in release/production
 
             AreaRegistration.RegisterAllAreas();
+            RegisterDependencyResolver();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            RegisterDependencyResolver(kernel);
         }
 
         private static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(_kernel.TryGet(typeof(UserProviderFilterAttribute)));
         }
 
         private static void RegisterRoutes(RouteCollection routes)
@@ -41,14 +42,16 @@ namespace ProductDevelopment.Web
                 );
         }
 
-        private static void RegisterDependencyResolver(IKernel kernel)
+        private static void RegisterDependencyResolver()
         {
-            kernel.Bind<IAuthentication>().To<Authentication>().InRequestScope();
-            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
-            kernel.Bind<IRepository<Defect>>().To<Repository<Defect>>().InRequestScope();
-            kernel.Bind<IRepository<Project>>().To<Repository<Project>>().InRequestScope();
-            kernel.Bind<IRepository<Severity>>().To<Repository<Severity>>().InRequestScope();
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            _kernel = new StandardKernel();
+            _kernel.Bind<IAuthentication>().To<Authentication>().InRequestScope();
+            _kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            _kernel.Bind<IRepository<Defect>>().To<Repository<Defect>>().InRequestScope();
+            _kernel.Bind<IRepository<Project>>().To<Repository<Project>>().InRequestScope();
+            _kernel.Bind<IRepository<Severity>>().To<Repository<Severity>>().InRequestScope();
+            _kernel.Bind<UserProviderFilterAttribute>().To<UserProviderFilterAttribute>().InRequestScope();
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(_kernel));
         }
     }
 }
