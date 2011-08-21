@@ -4,9 +4,9 @@
 }
 <h2>Create New Defect</h2>
 
-<form action="/Defects/Create/" method="POST">
-
-@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
 
     <fieldset>
         <legend>Defect</legend>
@@ -51,7 +51,7 @@
         </p>
     </fieldset>
 
-</form>
+}
 
 <p>
     <a href="/Defects">Back to Search Defects</a>
