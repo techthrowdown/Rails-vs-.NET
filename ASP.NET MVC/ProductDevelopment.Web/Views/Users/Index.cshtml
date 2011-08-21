@@ -18,7 +18,6 @@
             <th>
                 Admin
             </th>
-            <th></th>
         </tr>
     </thead>
 
@@ -30,9 +29,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Admin)
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
                 </td>
             </tr>
         }

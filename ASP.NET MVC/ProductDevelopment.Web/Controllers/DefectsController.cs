@@ -7,6 +7,7 @@ using ProductDevelopment.Web.Models;
 
 namespace ProductDevelopment.Web.Controllers
 {
+    [Authorize]
     public class DefectsController : Controller
     {
         private readonly IRepository<Defect> _defectRepo;

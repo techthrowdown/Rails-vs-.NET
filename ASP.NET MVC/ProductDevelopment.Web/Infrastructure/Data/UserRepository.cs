@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Helpers;
 using ProductDevelopment.Web.Models;
 
@@ -22,6 +23,12 @@ namespace ProductDevelopment.Web.Infrastructure.Data
                 }
             }
             return false;
+        }
+
+        public override void Add(User entity)
+        {
+            entity.Password = Crypto.HashPassword(entity.Password);
+            base.Add(entity);
         }
 
         private bool VerifyHashedPassword(string hashedPassword, string plainTextPassword)

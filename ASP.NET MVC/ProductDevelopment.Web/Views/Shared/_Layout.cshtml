@@ -12,7 +12,7 @@
     <div class="page">
         <header>
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1>Product Development Issue Tracker</h1>
             </div>
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
@@ -23,7 +23,7 @@
                     <li>@Html.ActionLink("Defects", "Index", "Defects")</li>
                     @if (ViewBag.User.Admin)
                     {
-                        <li>@Html.ActionLink("Admin", "Index", "User")</li>
+                        <li>@Html.ActionLink("Admin", "Index", "Users")</li>
                     }
                 </ul>
             </nav>

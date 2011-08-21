@@ -15,31 +15,31 @@ namespace ProductDevelopment.Web.Infrastructure.Data
             _set = _ctx.DbSet<T>();
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             _set.Add(entity);
             _ctx.SaveChanges();
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             _set.Remove(entity);
             _ctx.SaveChanges();
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             _set.Attach(entity);
             _ctx.Update(entity);
             _ctx.SaveChanges();
         }
 
-        public T Find(int id)
+        public virtual T Find(int id)
         {
             return _set.Find(id);
         }
 
-        public IQueryable<T> All()
+        public virtual IQueryable<T> All()
         {
             return _set;
         }
