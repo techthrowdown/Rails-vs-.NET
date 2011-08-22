@@ -16,12 +16,11 @@ namespace ProductDevelopment.Web.Models
 
         [Required]
         [StringLength(20, MinimumLength = 4)]
-        [Display(Name="Confirm Password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string PasswordConfirm { get; set; }
 
         [Required]
         public bool Admin { get; set; }
-
     }
 }

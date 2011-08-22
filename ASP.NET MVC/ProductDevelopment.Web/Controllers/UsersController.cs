@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ProductDevelopment.Web.Infrastructure.Data;
 using ProductDevelopment.Web.Models;
@@ -33,14 +30,14 @@ namespace ProductDevelopment.Web.Controllers
         [HttpPost]
         public ActionResult Create(UserInputModel userInputModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(userInputModel);
             }
 
             try
             {
-                var user = new User()
+                var user = new User
                                {
                                    Admin = userInputModel.Admin,
                                    Password = userInputModel.Password,
@@ -49,24 +46,23 @@ namespace ProductDevelopment.Web.Controllers
                 _userRepository.Add(user);
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
                 return View(userInputModel);
             }
         }
 
-        public ActionResult ValidateUser(string username)
-        {
-            bool validUsername = _userRepository.FindByUsername(username) == null;
-            return Json(validUsername, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Json()
+        public JsonResult Json()
         {
             var users = _userRepository.All();
             return Json(users, JsonRequestBehavior.AllowGet);
         }
-       
+
+        public JsonResult ValidateUser(string username)
+        {
+            var isValidUserName = _userRepository.FindByUsername(username) == null;
+            return Json(isValidUserName, JsonRequestBehavior.AllowGet);
+        }
     }
 }
