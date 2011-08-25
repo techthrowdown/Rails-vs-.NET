@@ -1,0 +1,3 @@
+[submodule "rails/bugaboo"]
+	path = rails/bugaboo
+	url = https://github.com/quickleft/bugaboo.git
